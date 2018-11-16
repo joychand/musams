@@ -12,7 +12,7 @@
     </ul>
 </nav>
 <div class="absentees index large-9 medium-8 columns content">
-    <h3><?= __('Absentees') ?></h3>
+    <h3><?= __('Weekly Report') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -25,7 +25,7 @@
                 <th scope="col"><?= $this->Paginator->sort('total_lectures') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('total_absentees') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('Uploaded_date') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+               
             </tr>
         </thead>
         <tbody>
@@ -40,11 +40,11 @@
                 <td><?= $this->Number->format($absentee->total_lectures) ?></td>
                 <td><?= $this->Number->format($absentee->total_absentees) ?></td>
                 <td><?= h($absentee->creation_date->setTimezone('Asia/Kolkata') ) ?></td>
-                <td class="actions">
+                <!-- <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $absentee->row_id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $absentee->row_id]) ?>
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $absentee->row_id], ['confirm' => __('Are you sure you want to delete # {0}?', $absentee->row_id)]) ?>
-                </td>
+                </td> -->
             </tr>
             <?php endforeach; ?>
         </tbody>

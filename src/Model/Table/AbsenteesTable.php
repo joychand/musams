@@ -94,4 +94,9 @@ class AbsenteesTable extends Table
 
         return $rules;
     }
+
+    public function reportExist($from_date, $to_date, $department_id, $user_id)
+    {
+        
+    }
 }

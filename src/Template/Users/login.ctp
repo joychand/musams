@@ -44,7 +44,7 @@ $cakeDescription = 'MUSAMS:MU Student Absentees Monitoring System';
 </div>
 <div class="row">
     
-        <h2 class="small-12 small-centered columns" style="text-align:center !important">Student Absentee Monitoring System</h2>
+        <h2 class="small-12 small-centered columns" style="text-align:center !important">Monitoring System</h2>
         
    
 </div>

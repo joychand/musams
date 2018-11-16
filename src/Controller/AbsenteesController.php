@@ -32,11 +32,12 @@ class AbsenteesController extends AppController
      */
     public function index()
     {
-        $this->loadModel('Absentees');
+        //$this->loadModel('Absentees');
         $this->paginate = [
             'contain' => ['Departments', 'Users']
         ];
-        $absentees = $this->paginate($this->Absentees);
+        $user_id=$this->Auth->user('user_id');
+        $absentees = $this->paginate($this->Absentees->find()->where(['Absentees.user_id'=>$user_id]));
 
         $this->set(compact('absentees'));
     }
@@ -74,11 +75,11 @@ class AbsenteesController extends AppController
             $absentee->department_id=$user['department_id'];
             $absentee->user_id=$user['user_id'];
             if ($this->Absentees->save($absentee)) {
-                $this->Flash->success(__('The absentee has been saved.'));
+                $this->Flash->success(__('The Weekly report  has been saved.'));
 
                 return $this->redirect(['action' => 'home']);
             }
-            $this->Flash->error(__('The absentee could not be saved. Please, try again.'));
+            $this->Flash->error(__('Sorry ! The weekly report  could not be saved. Please, try again.'));
         }
         $departments = $this->Absentees->Departments->find('list', ['limit' => 200]);
         $users = $this->Absentees->Users->find('list', ['limit' => 200]);

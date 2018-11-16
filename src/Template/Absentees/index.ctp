@@ -38,11 +38,11 @@
                 <td><?= $absentee->has('department') ? $this->Html->link($absentee->department->department_id, ['controller' => 'Departments', 'action' => 'view', $absentee->department->department_id]) : '' ?></td>
                 <td><?= $absentee->has('user') ? $this->Html->link($absentee->user->user_id, ['controller' => 'Users', 'action' => 'view', $absentee->user->user_id]) : '' ?></td> -->
                 
-                <td><?= h($absentee->from_date->i18nFormat(\IntlDateFormatter::FULL)) ?></td>
-                <td><?= h($absentee->to_date->i18nFormat(\IntlDateFormatter::FULL)) ?></td>
+                <td><?= h($absentee->from_date) ?></td>
+                <td><?= h($absentee->to_date) ?></td>
                 <td><?= $this->Number->format($absentee->total_lectures) ?></td>
                 <td><?= $this->Number->format($absentee->total_absentees) ?></td>
-                <td><?= h($absentee->creation_date->i18nFormat(\IntlDateFormatter::FULL)) ?></td>
+                <td><?= h($absentee->creation_date->setTimezone('Asia/Kolkata')) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $absentee->row_id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $absentee->row_id]) ?>
