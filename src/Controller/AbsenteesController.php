@@ -71,15 +71,20 @@ class AbsenteesController extends AppController
         $absentee = $this->Absentees->newEntity();
         if ($this->request->is('post')) {
             $absentee = $this->Absentees->patchEntity($absentee, $this->request->getData());
+            
             $user=$this->request->getSession()->read('Auth.User');
-            $absentee->department_id=$user['department_id'];
-            $absentee->user_id=$user['user_id'];
-            if ($this->Absentees->save($absentee)) {
-                $this->Flash->success(__('The Weekly report  has been saved.'));
-
-                return $this->redirect(['action' => 'home']);
+            if(!$this->Absentees->reportExist($absentee->from_date,$absentee->to_date,$user['department_id'],$user['user_id']))
+            {
+                $absentee->department_id=$user['department_id'];
+                $absentee->user_id=$user['user_id'];
+                if ($this->Absentees->save($absentee)) {
+                    $this->Flash->success(__('The Weekly report  has been saved.'));
+    
+                    return $this->redirect(['action' => 'home']);
+                }
             }
-            $this->Flash->error(__('Sorry ! The weekly report  could not be saved. Please, try again.'));
+           
+            $this->Flash->error(__('Sorry ! The weekly report Data already exist  could not be saved. Please, try again.'));
         }
         $departments = $this->Absentees->Departments->find('list', ['limit' => 200]);
         $users = $this->Absentees->Users->find('list', ['limit' => 200]);

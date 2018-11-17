@@ -13,5 +13,5 @@
     </ul>
 </nav>
 <div class="admin index large-9 medium-8 columns content">
-    <h2 style="text-align:center !important">Welcome to MUSAMS VC Page</h2>
+    <h2 style="text-align:center !important">Welcome to the VC Office Page</h2>
 </div>

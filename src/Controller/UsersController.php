@@ -159,8 +159,10 @@ public function logout()
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $roles = $this->Users->Roles->find('list', ['limit' => 200]);
-        $departments = $this->Users->Departments->find('list', ['limit' => 200]);
+        $roles = $roles=$this->Users->user_roles->find('list',
+        ['keyField'=>'user_role_id',
+        'valueField'=>'user_role_name']);
+        $departments = $this->Users->Departments->find('list', ['keyField' => 'department_id', 'valueField'=>'department_name']);
         $this->set(compact('user', 'roles', 'departments'));
     }
 

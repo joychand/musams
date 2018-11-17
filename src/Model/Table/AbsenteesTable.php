@@ -97,6 +97,8 @@ class AbsenteesTable extends Table
 
     public function reportExist($from_date, $to_date, $department_id, $user_id)
     {
-        
+       
+        $reportExist=$this->exists(['from_date'=>$from_date]);
+        return $reportExist;
     }
 }
