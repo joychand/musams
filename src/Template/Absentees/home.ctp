@@ -23,17 +23,31 @@ $this->assign('title', 'Weekly Absentee Data');
 
   
   <script>
-    $(function() {
+    $(document).ready(function() {
         $( "#from_date" ).datepicker( 
             {dateFormat: 'dd/mm/yy',
             altField: ".from_date",
-             altFormat: "yy-mm-dd"
-            
-            });
-        $( "#to_date" ).datepicker( 
+             altFormat: "yy-mm-dd" ,
+            onSelect: function (selected) {
+               // alert(selected);
+            var dt = new Date(selected);
+            //dt.setDate(dt.getDate('dd/mm/yy') + 1);
+          // alert(dt);
+            $("#to_date").datepicker("option", "minDate",selected);
+            }
+        
+        });
+        $( "#to_date" ).datepicker(  
             {dateFormat: 'dd/mm/yy',
              altField: ".to_date",
-             altFormat: "yy-mm-dd"
+             altFormat: "yy-mm-dd",
+             onSelect: function (selected) {
+                
+            var dt = new Date(selected);
+           // dt.setDate(dt.getDate('dd/mm/yy') - 1);
+    // alert(dt);
+            $("#from_date").datepicker("option","maxDate",selected );
+        }
             
             });
     //   var dateText = '11/14/2018',

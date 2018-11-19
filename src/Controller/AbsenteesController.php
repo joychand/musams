@@ -83,8 +83,12 @@ class AbsenteesController extends AppController
                     return $this->redirect(['action' => 'home']);
                 }
             }
+            else {
+                $this->Flash->error(__('Sorry ! The weekly report Data already exist  could not be saved. Please, select other week.'));
+                return $this->redirect(['action' => 'home']);
+            }
            
-            $this->Flash->error(__('Sorry ! The weekly report Data already exist  could not be saved. Please, try again.'));
+            $this->Flash->error(__('Sorry ! The weekly report Data already   could not be saved. Plz try again.'));
         }
         $departments = $this->Absentees->Departments->find('list', ['limit' => 200]);
         $users = $this->Absentees->Users->find('list', ['limit' => 200]);
